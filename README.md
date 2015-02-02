@@ -1,19 +1,20 @@
 BarkleyREI Labs Dropdown Menu
 =====================
 
-A simple dropdown plugin that makes no assumptions about your markup.
+Adds favorites functionality to REIgnition Tourism Manager websites.
 
 # Quick start
 
 ```
-$(function() {
+npm install
+```
 
-	var dd = $('#breilabs_dropdownmenu').breilabs_dropdownmenu({
-		selector: '.brei-has-dropdown',
-		activeDropdownClass: 'brei-dropdown-is-active',
-		activeSelectorClass: 'brei-is-active',
-		event: 'click'
-	});
+```
+bower install
+```
 
+```
+var favorites = breilabs.favorites.init({
+	apiUrl: 'getjsondata.json'
 });
 ```
