@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>BarkleyREI Labs Favorites</title>
+
+	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.css" />
+
+	<style type="text/css">
+
+	</style>
+
+</head>
+<body>
+
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="small-12 columns">
+				<h1>BarkleyREI Labs Favorites</h1>
+			</div>
+		</div>
+
+		<div class="row">
+	  		<div class="small-12 columns">
+	  			<h2>Status</h2>
+	  			<p>Displays the number of favorites the current user has saved.</p>
+	  			<p>
+	  				<span class="label round success brei-favorites-status">0</span>
+	  				<span class="label round alert brei-favorites-status">0</span>
+	  				<span class="label round warning brei-favorites-status">0</span>
+	  			</p>
+	  		</div>
+	  	</div>
+
+	  	<div class="row">
+	  		<div class="small-12 columns">
+	  			<h2>Add or Remove</h2>
+	  			<p>Once the favorites load, the disabled status on the button is removed and click events are added.</p>
+	  			<div class="btn-group" role="group">
+					<button type="button" class="brei-favorite-btn button disabled" data-id="10665">
+						Add Favorite (10665)
+					</button>
+					<button type="button" class="brei-favorite-btn button disabled" data-id="66">
+						Add Favorite (66)
+					</button>
+					<button type="button" class="brei-favorite-btn button disabled" data-id="87">
+						Add Favorite (87)
+					</button>
+				</div>
+	  		</div>
+	  	</div>
+
+	  	<div class="row">
+	  		<div class="small-12 columns">
+	  			<h2>Has Favorite</h2>
+	  			<p>Checks if a favorite has alredy been added.</p>
+	  			<div class="btn-group" role="group">
+					<button type="button" class="has-favorite-btn button" data-id="13">
+						Has Favorite (13)
+					</button>
+					<button type="button" class="has-favorite-btn button" data-id="10665">
+						Has Favorite (10665)
+					</button>
+					<button type="button" class="has-favorite-btn button" data-id="87">
+						Has Favorite (87)
+					</button>
+					<button type="button" class="has-favorite-btn button" data-id="187">
+						Has Favorite (187)
+					</button>
+				</div>
+	  		</div>
+	  	</div>
+
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+	<script src="../bower_components/rsvp/rsvp.min.js"></script>
+	<script src="../src/breilabs_favorites.js"></script>
+	<script>
+
+		$(function() {
+
+			var favorites = breilabs.favorites.init({
+				apiUrl: 'getjsondata.json'
+			});
+
+			$('.has-favorite-btn').on('click', function (event) {
+
+				var $btn = $(event.currentTarget);
+				var id = $btn.data().id;
+
+				if (favorites.isFavorite(id)) {
+					window.alert('This is a favorite');
+				} else {
+					window.alert('This is NOT a favorite');
+				}
+
+				return false;
+
+			});
+
+
+		});
+
+	</script>
+
+</body>
+</html>
