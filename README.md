@@ -1,4 +1,4 @@
-BarkleyREI Labs Dropdown Menu
+BarkleyREI Labs Favorites
 =====================
 
 Adds favorites functionality to REIgnition Tourism Manager websites.
