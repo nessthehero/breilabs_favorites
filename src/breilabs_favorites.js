@@ -4,12 +4,16 @@ var breilabs = breilabs || {};
 
 	'use strict';
 
+	var REMOVED_STATUS = 'removed';
+	var ADDED_STATUS = 'added';
+
 	var favorites = breilabs.favorites = {};
 
 	var _apiUrl = '/getjsondata.ashx?id=29';
 	var _isFavoriteClass = 'brei-is-favorite';
 	var _favoritesStatusClass = 'brei-favorites-status';
 	var _favoritesArray;
+	var _favoriteToggleFunc;
 
 	/**
 	 * Sets up the UI.
@@ -32,6 +36,10 @@ var breilabs = breilabs || {};
 					_removeFavoriteFromArray(id);
 					_updateStatus();
 
+					if (_favoriteToggleFunc) {
+						_favoriteToggleFunc.call(undefined, REMOVED_STATUS, $btn);
+					}
+
 				}, function (error) {
 					window.alert('There was an error removing your favorite. Please try again.');
 					console.error(error);
@@ -43,8 +51,13 @@ var breilabs = breilabs || {};
 				favorites.addFavorite(id).then(function () {
 
 					$btn.addClass(hasFavClass);
+
 					_favoritesArray.push({ID: id});
 					_updateStatus();
+
+					if (_favoriteToggleFunc) {
+						_favoriteToggleFunc.call(undefined, ADDED_STATUS, $btn);
+					}
 
 				}, function (error) {
 					window.alert('There was an error adding your favorite. Please try again.');
@@ -141,6 +154,10 @@ var breilabs = breilabs || {};
 
 			if (params.isFavoriteClass) {
 				_isFavoriteClass = params.isFavoriteClass;
+			}
+
+			if (params.favoriteToggleFunc) {
+				_favoriteToggleFunc = params.favoriteToggleFunc;
 			}
 
 		}

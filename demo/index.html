@@ -83,8 +83,16 @@
 		$(function() {
 
 			var favorites = breilabs.favorites.init({
-				apiUrl: 'getjsondata.json'
+				apiUrl: 'getjsondata.json',
+				favoriteToggleFunc: toggleFavoriteStatus
 			});
+
+			function toggleFavoriteStatus (status, btn) {
+
+				// do something custom to the site like change the button's text
+				console.log(btn);
+
+			}
 
 			$('.has-favorite-btn').on('click', function (event) {
 
