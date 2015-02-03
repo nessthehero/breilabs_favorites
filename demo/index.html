@@ -81,7 +81,8 @@
 		$(function() {
 
 			var favorites = breilabs.favorites.init({
-				apiUrl: 'getjsondata.json',
+				apiRoot: './',
+				getApiUrl: 'getjsondata.json',
 				favoriteToggleFunc: toggleFavoriteStatus
 			});
 

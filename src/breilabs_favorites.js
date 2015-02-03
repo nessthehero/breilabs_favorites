@@ -9,7 +9,12 @@ var breilabs = breilabs || {};
 
 	var favorites = breilabs.favorites = {};
 
-	var _apiUrl = '/getjsondata.ashx?id=29';
+	// api urls
+	var _apiRoot = '/';
+	var _getApiUrl = '/getjsondata.ashx?id=29';
+	var _saveApiUrl = '/RemoveFavorite.ashx';
+	var _removeApiUrl = '/SaveFavorite.ashx';
+
 	var _isFavoriteClass = 'brei-is-favorite';
 	var _favoritesStatusClass = 'brei-favorites-status';
 	var _favoritesArray;
@@ -141,6 +146,11 @@ var breilabs = breilabs || {};
 
 
 	/**
+	 * Public functions
+	 */
+
+
+	/**
 	 * Sets the params and loads the favorites
 	 */
 	favorites.init = function(params) {
@@ -148,8 +158,20 @@ var breilabs = breilabs || {};
 		// if there are params passed, process them
 		if (typeof params !== 'undefined') {
 
-			if (params.apiUrl) {
-				_apiUrl = params.apiUrl;
+			if (params.apiRoot) {
+				_apiRoot = params.apiRoot;
+			}
+
+			if (params.getApiUrl) {
+				_getApiUrl = params.getApiUrl;
+			}
+
+			if (params.saveApiUrl) {
+				_saveApiUrl = params.saveApiUrl;
+			}
+
+			if (params.removeApiUrl) {
+				_removeApiUrl = params.removeApiUrl;
 			}
 
 			if (params.isFavoriteClass) {
@@ -162,7 +184,7 @@ var breilabs = breilabs || {};
 
 		}
 
-		if (_apiUrl) {
+		if (_getApiUrl) {
 			_getFavorites();
 		}
 
@@ -175,7 +197,10 @@ var breilabs = breilabs || {};
    	 */
    	favorites.addFavorite = function(id) {
 
-		var promise = $.get('/SaveFavorite.ashx?itemid=' + id);
+		var promise = $.ajax({
+			url: _apiRoot + _saveApiUrl,
+			itemid: id
+		});
    		return promise;
 
    	};
@@ -185,17 +210,22 @@ var breilabs = breilabs || {};
    	 */
 	favorites.removeFavorite = function(id) {
 
-		var promise =  $.get('/RemoveFavorite.ashx?itemid=' + id);
+		var promise = $.ajax({
+			url: _apiRoot + _removeApiUrl,
+			itemid: id
+		});
    		return promise;
 
    	};
 
   	/**
-   	 * Loads the favorites datasource using the _apiUrl variable. Once complete, the _addUiEvents() function is called.
+   	 * Loads the favorites datasource using the _getApiUrl variable. Once complete, the _addUiEvents() function is called.
    	 */
    	favorites.getFavorites = function() {
 
-	 	var promise = $.get(_apiUrl);
+	 	var promise = $.ajax({
+	 		url: _apiRoot + _getApiUrl
+	 	});
 		return promise;
 
    	};
