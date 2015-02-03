@@ -175,17 +175,7 @@ var breilabs = breilabs || {};
    	 */
    	favorites.addFavorite = function(id) {
 
-   		var promise = new RSVP.Promise(function (resolve, reject) {
-
-   			$.get('/SaveFavorite.ashx?itemid=' + id)
-	   			.done(function (data) {
-	   				resolve(data);
-	   			}).fail(function (jqxhr, textStatus, error) {
-	   				reject(error);
-	   			});
-
-   		});
-
+		var promise = $.get('/SaveFavorite.ashx?itemid=' + id);
    		return promise;
 
    	};
@@ -193,19 +183,9 @@ var breilabs = breilabs || {};
   	/**
    	 * Removes a favorite and sets the button's class appropriately
    	 */
-   	favorites.removeFavorite = function(id) {
+	favorites.removeFavorite = function(id) {
 
-   		var promise = new RSVP.Promise(function (resolve, reject) {
-
-   			$.get('/RemoveFavorite.ashx?itemid=' + id)
-   				.done(function (data) {
-	   				resolve(data);
-	   			}).fail(function (jqxhr, textStatus, error) {
-	   				reject(error);
-	   			});
-
-   		});
-
+		var promise =  $.get('/RemoveFavorite.ashx?itemid=' + id);
    		return promise;
 
    	};
@@ -215,18 +195,7 @@ var breilabs = breilabs || {};
    	 */
    	favorites.getFavorites = function() {
 
-   		var promise = new RSVP.Promise(function (resolve, reject) {
-
-   			$.getJSON(_apiUrl)
-		   		.done(function (data) {
-		   			resolve(data);
-		   		})
-		   		.fail(function (jqxhr, textStatus, error) {
-		   			reject(error);
-		   		});
-
-		});
-
+	 	var promise = $.get(_apiUrl);
 		return promise;
 
    	};
