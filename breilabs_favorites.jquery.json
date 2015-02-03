@@ -1,0 +1,33 @@
+{
+	"name": "breilabs_favorites",
+	"title": "BarkleyREI Labs Favorites",
+	"description": "Adds favorites functionality to a REIgnition Tourism Manager website.",
+	"keywords": [
+	],
+	"version": "0.1",
+	"author": {
+		"name": "Ryan Sprake",
+		"email": "rsprake@barkleyrei.com",
+		"url": "http://www.barkleyrei.com/"
+	},
+	"maintainers": [
+		{
+			"name": "Ryan Sprake",
+			"email": "rsprake@barkleyrei.com",
+			"url": "http://www.barkleyrei.com/"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://zenorocha.mit-license.org/"
+		}
+	],
+	"bugs": "https://github.com/BarkleyREI/breilabs_favorites/issues",
+	"homepage": "http://www.barkleyrei.com/",
+	"docs": "http://www.barkleyrei.com/",
+	"download": "http://www.barkleyrei.com/",
+	"dependencies": {
+		"jquery": ">=2.0"
+	}
+}
